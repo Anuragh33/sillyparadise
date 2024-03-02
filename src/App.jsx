@@ -22,7 +22,7 @@ function App() {
 
             <Route path='dashboard' element={<Dashboard />} />
 
-            <Route path='bookings' element={<Dashboard />} />
+            <Route path='bookings' element={<Bookings />} />
 
             <Route path='cabins' element={<Cabins />} />
 

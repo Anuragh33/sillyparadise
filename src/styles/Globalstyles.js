@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -9,15 +9,15 @@ const GlobalStyles = createGlobalStyle`
 /* Colors adapted from https://tailwindcss.com/docs/customizing-colors */
 
 :root {
-  /* Indigo */
+  /* Green */
   --color-brand-50: #eef2ff;
   --color-brand-100: #e0e7ff;
-  --color-brand-200: #c7d2fe;
-  --color-brand-500: #6366f1;
-  --color-brand-600: #4f46e5;
-  --color-brand-700: #4338ca;
-  --color-brand-800: #3730a3;
-  --color-brand-900: #312e81;
+  --color-brand-200: #00b200;
+  --color-brand-500: #009900;
+  --color-brand-600: #007f00;
+  --color-brand-700: #006600;
+  --color-brand-800: #004c00;
+  --color-brand-900: #003300;
 
   /* Grey */
   --color-grey-0: #fff;
@@ -190,6 +190,6 @@ FOR DARK MODE
 --image-opacity: 90%;
 */
 
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;
