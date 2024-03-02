@@ -5,12 +5,6 @@ import Heading from './ui/Heading';
 import Input from './ui/Input';
 import Row from './ui/Row';
 
-const H1 = styled.h1`
-  font-size: 30px;
-  font-weight: 600;
-  background-color: green;
-`;
-
 const StyledApp = styled.div`
   //background-color: lightgreen;
   padding: 20px;
@@ -20,25 +14,40 @@ function App() {
   return (
     <>
       <GlobalStyles />
+
       <StyledApp>
-        <Row>
-          <Heading as='h1'>sillyParadise</Heading>
+        <Row type='vertical'>
+          <Row type='horizontal'>
+            <Heading as='h1'>The sillyParadise</Heading>
 
-          <div>
-            <Heading as='h2'>Check In and Out</Heading>
+            <div>
+              <Heading as='h2'>Check In and Out</Heading>
 
-            <Button onClick={() => alert('check in')}>Check In</Button>
-            <Button onClick={() => alert('check out')}>Check Out</Button>
-          </div>
-        </Row>
+              <Button
+                variation='primary'
+                size='medium'
+                onClick={() => alert('check in')}
+              >
+                Check In
+              </Button>
+              <Button
+                variation='secondary'
+                size='small'
+                onClick={() => alert('check out')}
+              >
+                Check Out
+              </Button>
+            </div>
+          </Row>
 
-        <Row>
-          <Heading as='h3'>sillyParadise</Heading>
+          <Row type='vertical'>
+            <Heading as='h3'>Form</Heading>
 
-          <div>
-            <Input type='number' placeholder='Number of Guests' />
-            <Input type='number' placeholder='Number of Guests' />
-          </div>
+            <div>
+              <Input type='number' placeholder='Number of Guests' />
+              <Input type='number' placeholder='Number of Guests' />
+            </div>
+          </Row>
         </Row>
       </StyledApp>
     </>
