@@ -5,6 +5,7 @@ import { deleteCabin } from '../../services/apiCabins';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 import CreateCabinForm from './CreateCabinForm';
+import { useDeleteCabin } from './useDeleteCabin';
 
 const TableRow = styled.div`
   display: grid;
@@ -58,7 +59,7 @@ function CabinRow({ cabin }) {
 
   const [showForm, setShowForm] = useState(false);
 
-  const queryClient = useQueryClient();
+  const { isDeleting, deleteCabin } = useDeleteCabin();
 
   return (
     <>
@@ -74,7 +75,7 @@ function CabinRow({ cabin }) {
           <button onClick={() => setShowForm((showForm) => !showForm)}>
             Edit
           </button>
-          <button onClick={() => mutate(cabinID)} disabled={isDeleting}>
+          <button onClick={() => deleteCabin(cabinID)} disabled={isDeleting}>
             Delete
           </button>
         </div>
