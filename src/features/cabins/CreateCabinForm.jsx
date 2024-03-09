@@ -60,7 +60,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
       onSubmit={handleSubmit(onSubmit, onError)}
       type={onCloseModal ? 'modal' : 'regular'}
     >
-      <FormRow label='Cabin name' error={errors?.name?.message}>
+      <FormRow label='Cabin Name' error={errors?.name?.message}>
         <Input
           type='text'
           id='name'
@@ -100,7 +100,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
         />
       </FormRow>
 
-      <FormRow label='discount' error={errors?.discount?.message}>
+      <FormRow label='Discount' error={errors?.discount?.message}>
         <Input
           type='number'
           id='discount'
@@ -115,7 +115,7 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
         />
       </FormRow>
 
-      <FormRow label='description' error={errors?.description?.message}>
+      <FormRow label='Description' error={errors?.description?.message}>
         <Textarea
           type='number'
           id='description'
