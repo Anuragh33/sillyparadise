@@ -15,15 +15,16 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
 
   const { isEditing, editCabin } = useEditCabin();
 
+  const isWorking = isCreating || isEditing;
+
   const { id: editID, ...editValues } = cabinToEdit;
+
   const isEdit = Boolean(editID);
 
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEdit ? editValues : {},
   });
   const { errors } = formState;
-
-  const isWorking = isCreating || isEditing;
 
   function onSubmit(data) {
     const image = typeof data.image === 'string' ? data.image : data.image[0];
