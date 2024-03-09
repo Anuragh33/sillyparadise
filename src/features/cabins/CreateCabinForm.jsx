@@ -11,6 +11,10 @@ import Textarea from '../../ui/Textarea';
 import FormRow from '../../ui/FormRow';
 
 function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
+  const { isCreating, createCabin } = useCreateCabin();
+
+  const { isEditing, editCabin } = useEditCabin();
+
   const { id: editID, ...editValues } = cabinToEdit;
   const isEdit = Boolean(editID);
 
@@ -18,10 +22,6 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
     defaultValues: isEdit ? editValues : {},
   });
   const { errors } = formState;
-
-  const { isCreating, createCabin } = useCreateCabin();
-
-  const { isEditing, editCabin } = useEditCabin();
 
   const isWorking = isCreating || isEditing;
 
@@ -141,13 +141,13 @@ function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
       <FormRow>
         {/* type is an HTML attribute! */}
         <Button
-          variation='secondary'
+          variations='secondary'
           type='reset'
           onClick={() => onCloseModal?.()}
         >
           Cancel
         </Button>
-        <Button variation='primary' disabled={isWorking}>
+        <Button variations='primary' disabled={isWorking}>
           {!isEdit ? 'Create new cabin' : 'Edit Cabin'}
         </Button>
       </FormRow>
