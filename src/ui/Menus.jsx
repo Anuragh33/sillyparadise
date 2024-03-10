@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { useClick } from '../hooks/useClick';
 
 const Menu = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -31,8 +30,7 @@ const StyledToggle = styled.button`
 `;
 
 const StyledList = styled.ul`
-  position: absolute;
-  z-index: 1000;
+  position: fixed;
 
   background-color: var(--color-grey-0);
   box-shadow: var(--shadow-md);
@@ -77,8 +75,9 @@ function Menus({ children }) {
   const open = setOpenId;
 
   return (
-    <MenusContext.Provider>
+    <MenusContext.Provider
       value={{ openId, close, open, position, setPosition }}
+    >
       {children}
     </MenusContext.Provider>
   );
