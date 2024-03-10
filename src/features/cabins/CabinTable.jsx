@@ -5,15 +5,20 @@ import CabinRow from './CabinRow';
 
 import { useSearchParams } from 'react-router-dom';
 import { useCabins } from './useCabins';
+import Empty from '../../ui/Empty';
 
 function CabinTable() {
   const { isLoading, cabins } = useCabins();
 
   const [searchParams] = useSearchParams();
 
+  if (isLoading) return <Spinner />;
+
+  if (!cabins.length) return <Empty resourceName='Cabins' />;
   //1. FILTER   //////////////////////////////////////
 
   let filteredCabins;
+
   const filterValue = searchParams.get('discount') || 'All';
 
   if (filterValue === 'All') filteredCabins = cabins;
@@ -35,8 +40,6 @@ function CabinTable() {
   const sortedCabins = filteredCabins.sort(
     (a, b) => (a[fieldName] - b[fieldName]) * modifier
   );
-
-  if (isLoading) return <Spinner />;
 
   return (
     <Menus>
