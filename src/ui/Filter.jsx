@@ -37,9 +37,9 @@ const FilterButton = styled.button`
 function Filter() {
   return (
     <StyledFilter>
-      <Filter>All</Filter>
-      <Filter>No Discount</Filter>
-      <Filter>With Discount</Filter>
+      <FilterButton>All</FilterButton>
+      <FilterButton>No Discount</FilterButton>
+      <FilterButton>With Discount</FilterButton>
     </StyledFilter>
   );
 }
