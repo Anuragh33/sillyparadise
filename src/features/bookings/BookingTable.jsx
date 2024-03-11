@@ -6,7 +6,7 @@ import BookingRow from './BookingRow';
 import useBooking from './useBooking';
 
 function BookingTable() {
-  const { isLoading, bookings, error } = useBooking();
+  const { isLoading, bookings } = useBooking();
 
   if (isLoading) return <Spinner />;
 

@@ -1,7 +1,7 @@
 import { getToday } from '../utils/helpers';
 import supabase from './supabase';
 
-export async function getBookings() {
+export async function getBookings({ filter, sortby }) {
   const { data, error } = await supabase
     .from('bookings')
     .select(
