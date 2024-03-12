@@ -12,6 +12,7 @@ function CabinTableOperations() {
           { value: 'No-Discount', label: 'No Discount' },
           { value: 'With-Discount', label: 'With Discount' },
         ]}
+        param={{ name: 'page', value: 1 }}
       />
       <SortBy
         options={[
