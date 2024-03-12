@@ -17,8 +17,11 @@ function useBooking() {
   const sortRaw = searchParams.get('SortBy') || 'startDate-desc';
 
   const [field, direction] = sortRaw.split('-');
-
   const sortBy = { field, direction };
+
+  // 3. Pagination ///////////////////////////////////
+
+  const page = !searchParams.get(page) ? 1 : Number(searchParams.get('page'));
 
   const {
     isLoading,
