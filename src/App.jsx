@@ -11,6 +11,7 @@ import Account from './pages/Account';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
 import AppLayout from './ui/AppLayout';
+import Booking from './pages/Booking';
 import { Toaster } from 'react-hot-toast';
 import isPropValid from '@emotion/is-prop-valid';
 import { StyleSheetManager } from 'styled-components';
@@ -45,6 +46,8 @@ function App() {
               <Route path='dashboard' element={<Dashboard />} />
 
               <Route path='bookings' element={<Bookings />} />
+
+              <Route path='bookings/:bookingId' element={<Booking />} />
 
               <Route path='cabins' element={<Cabins />} />
 

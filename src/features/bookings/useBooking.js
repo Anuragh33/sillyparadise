@@ -1,65 +1,19 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { useSearchParams } from 'react-router-dom';
-import { getBookings } from '../../services/apiBookings';
-import { PAGE_SIZE } from '../../utils/constants';
+import { useQuery } from '@tanstack/react-query';
+import { getBooking } from '../../services/apiBookings';
+import { useParams } from 'react-router-dom';
 
-function useBooking() {
-  const queryClient = useQueryClient();
-  const [searchParams] = useSearchParams();
-
-  //1. Filter   //////////////////////////////////////
-  const filterValue = searchParams.get('status');
-  const filter =
-    !filterValue || filterValue === 'all'
-      ? null
-      : { field: 'status', value: filterValue, method: 'eq' };
-
-  //2. Sort  /////////////////////////////////////////
-
-  const sortRaw = searchParams.get('SortBy') || 'startDate-desc';
-
-  const [field, direction] = sortRaw.split('-');
-  const sortBy = { field, direction };
-
-  // 3. Pagination ///////////////////////////////////
-
-  const page = !searchParams.get('page') ? 1 : Number(searchParams.get('page'));
+export function useBooking() {
+  const { bookingId } = useParams();
 
   const {
     isLoading,
-    data: { data: bookings, count } = {},
     error,
+    data: booking,
   } = useQuery({
-    queryKey: ['bookings', filter, sortBy, page],
-    queryFn: () => getBookings({ filter, sortBy, page }),
+    queryKey: ['booking', bookingId],
+    queryFn: () => getBooking(bookingId),
+    retry: false,
   });
 
-  //Pre-Fetch data to react query client
-  const pageCount = Math.ceil(count / PAGE_SIZE);
-
-  if (page < pageCount)
-    queryClient.prefetchQuery({
-      queryKey: ['bookings', filter, sortBy, page + 1],
-      queryFn: () =>
-        getBookings({
-          filter,
-          sortBy,
-          page: page + 1,
-        }),
-    });
-
-  if (page > 1)
-    queryClient.prefetchQuery({
-      queryKey: ['bookings', filter, sortBy, page - 1],
-      queryFn: () =>
-        getBookings({
-          filter,
-          sortBy,
-          page: page - 1,
-        }),
-    });
-
-  return { isLoading, error, bookings, count };
+  return { isLoading, error, booking };
 }
-
-export default useBooking;

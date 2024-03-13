@@ -3,7 +3,7 @@ import Menus from '../../ui/Menus';
 import Table from '../../ui/Table';
 import Spinner from '../../ui/Spinner';
 import BookingRow from './BookingRow';
-import useBooking from './useBooking';
+import useBooking from './useBookings';
 import Pagination from '../../ui/Pagination';
 
 function BookingTable() {
