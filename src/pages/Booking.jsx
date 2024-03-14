@@ -1,7 +1,7 @@
 import BookingDetail from '../features/bookings/BookingDetail';
 
-function BokkingDetail() {
+function Booking() {
   return <BookingDetail />;
 }
 
-export default BokkingDetail;
+export default Booking;

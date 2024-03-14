@@ -15,5 +15,5 @@ export function useBooking() {
     retry: false,
   });
 
-  return { isLoading, error, booking };
+  return { booking, isLoading, error };
 }

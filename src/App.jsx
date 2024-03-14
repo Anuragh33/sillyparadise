@@ -1,20 +1,21 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import isPropValid from '@emotion/is-prop-valid';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import GlobalStyles from './styles/Globalstyles';
-import Dashboard from './pages/Dashboard';
+import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { StyleSheetManager } from 'styled-components';
+import Account from './pages/Account';
+import Booking from './pages/Booking';
 import Bookings from './pages/Bookings';
 import Cabins from './pages/Cabins';
-import Users from './pages/Users';
-import Settings from './pages/Settings';
-import Account from './pages/Account';
+import Checkin from './pages/Checkin';
+import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import PageNotFound from './pages/PageNotFound';
+import Settings from './pages/Settings';
+import Users from './pages/Users';
+import GlobalStyles from './styles/Globalstyles';
 import AppLayout from './ui/AppLayout';
-import Booking from './pages/Booking';
-import { Toaster } from 'react-hot-toast';
-import isPropValid from '@emotion/is-prop-valid';
-import { StyleSheetManager } from 'styled-components';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,6 +49,8 @@ function App() {
               <Route path='bookings' element={<Bookings />} />
 
               <Route path='bookings/:bookingId' element={<Booking />} />
+
+              <Route path='checkin/:bookingId' element={<Checkin />} />
 
               <Route path='cabins' element={<Cabins />} />
 
