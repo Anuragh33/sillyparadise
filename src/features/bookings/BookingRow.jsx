@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import Table from '../../ui/Table';
 import Tag from '../../ui/Tag';
 
-import { HiArrowDownOnSquare, HiEye } from 'react-icons/hi2';
+import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye } from 'react-icons/hi2';
 import { useNavigate } from 'react-router-dom';
 import Menus from '../../ui/Menus';
 import { formatCurrency, formatDistanceFromNow } from '../../utils/helpers';
+import { useState } from 'react';
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -52,6 +53,8 @@ function BookingRow({
 }) {
   const navigate = useNavigate();
 
+  const [checkout, setCheckout] = useState(false);
+
   const statusToTagName = {
     unconfirmed: 'blue',
     'checked-in': 'green',
@@ -87,6 +90,17 @@ function BookingRow({
       <Menus.Menu>
         <Menus.Toggle id={bookingId} />
         <Menus.List id={bookingId}>
+          {status === 'checked-in' && (
+            <Menus.Button
+              icon={<HiArrowUpOnSquare />}
+              onClick={() => {
+                setCheckout((checkout) => !checkout);
+              }}
+            >
+              CheckOut
+            </Menus.Button>
+          )}
+
           <Menus.Button
             icon={<HiEye />}
             onClick={() => navigate(`/bookings/${bookingId}`)}
