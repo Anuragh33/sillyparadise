@@ -14,10 +14,10 @@ export function useDeleteBookings({ bookingId }) {
     },
     onSuccess: () => {
       toast.success('Booking deleted successfuly');
+      navigation('/bookings');
       queryClient.invalidateQueries({
         queryKey: ['bookings'],
       });
-      navigation('/bookings');
     },
 
     onError: () => {
