@@ -11,19 +11,18 @@ export function useCheckout() {
     mutationFn: ({ bookingId }) =>
       updateBooking(bookingId, {
         status: 'checked-out',
-        isPaid: true,
       }),
 
     onSuccess: (data) => {
-      toast.success(`Booking #${data.id} is successfully CheckedIn.`);
+      toast.success(`Booking #${data.id} is successfully CheckedOut.`);
       queryClient.invalidateQueries({ active: true });
       navigate('/');
     },
 
     onError: (data) => {
-      toast.error('There was an error while checking in!!');
+      toast.error('There was an error while checking Out!!');
     },
   });
 
-  return { checkin, isCheckingIn };
+  return { checkout, isCheckingOut };
 }
