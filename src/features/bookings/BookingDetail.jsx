@@ -6,13 +6,17 @@ import ButtonText from '../../ui/ButtonText';
 import Heading from '../../ui/Heading';
 import Row from '../../ui/Row';
 import Tag from '../../ui/Tag';
+import Modal from '../../ui/Modal';
+import ConfirmDelete from '../../ui/ConfirmDelete';
+
 import BookingDataBox from './BookingDataBox';
 
 import { HiArrowDownOnSquare, HiArrowUpOnSquare } from 'react-icons/hi2';
 import { useNavigate } from 'react-router-dom';
 import { useMoveBack } from '../../hooks/useMoveBack';
 import Spinner from '../../ui/Spinner';
-import { useCheckout } from '../check-in-out/useCheckout';
+import { useDeleteBookings } from '../bookings/useDeleteBookings';
+import { useCheckout } from '../check-in-out/useCheckOut';
 import { useBooking } from './useBooking';
 
 const HeadingGroup = styled.div`
@@ -22,15 +26,17 @@ const HeadingGroup = styled.div`
 `;
 
 function BookingDetail() {
-  const { booking, isLoading } = useBooking();
-
-  const { checkout, isCheckingOut } = useCheckout();
-
   const moveBack = useMoveBack();
 
   const navigate = useNavigate();
 
-  if (isLoading || isCheckingOut) return <Spinner />;
+  const { booking, isLoading } = useBooking();
+
+  const { checkout, isCheckingOut } = useCheckout();
+
+  const { deletebooking, isDeleting } = useDeleteBookings();
+
+  if (isLoading || isCheckingOut || isDeleting) return <Spinner />;
 
   const { status, id: bookingId, isPaid } = booking;
 
@@ -73,6 +79,23 @@ function BookingDetail() {
             Check Out
           </Button>
         )}
+
+        <Modal>
+          <Modal.Open opens='delete'>
+            <Button variation='danger'>Delete</Button>
+          </Modal.Open>
+          <Modal.Window name='delete'>
+            <ConfirmDelete
+              disabled={isDeleting}
+              resourceName='booking'
+              onConfirm={() => {
+                deletebooking(bookingId, {
+                  onSettled: () => navigate(-1),
+                });
+              }}
+            />
+          </Modal.Window>
+        </Modal>
 
         <Button variation='secondary' onClick={moveBack}>
           Back

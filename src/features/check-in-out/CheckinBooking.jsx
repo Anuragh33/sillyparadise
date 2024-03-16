@@ -14,7 +14,7 @@ import Spinner from '../../ui/Spinner';
 import { useEffect, useState } from 'react';
 import { formatCurrency } from '../../utils/helpers';
 import { isPast } from 'date-fns';
-import { useChecking } from './useChecking';
+import { useChecking } from './useCheckIn';
 import { useUpdateSettings } from '../settings/useUpdateSettings';
 import { useSettings } from '../settings/useSettings';
 
