@@ -24,17 +24,15 @@ const Avatar = styled.img`
 function UserAvatar() {
   const { user } = useUser();
 
-  const { avatar, fullName } = !user ? {} : user.user_metadata;
-  if (!fullName) {
-    const fullName = 'Anuragh';
-  }
+  const { avatar, fullName } = user.user_metadata;
+
   return (
     <StyledUserAvatar>
       <Avatar
         src={avatar || 'default-user.jpg'}
         alt={`Avatar of ${fullName}`}
       />
-      <span>{fullName}</span>
+      <span>{fullName || 'Anuragh'}</span>
     </StyledUserAvatar>
   );
 }

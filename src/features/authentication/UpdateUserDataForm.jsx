@@ -26,9 +26,21 @@ function UpdateUserDataForm() {
   function handleSubmit(e) {
     e.preventDefault();
     if (!fullName) return;
-    updateUser({ avatar, fullName });
+    updateUser(
+      { avatar, fullName },
+      {
+        onSuccess: () => {
+          setAvatar(null);
+          e.target.reset();
+        },
+      }
+    );
   }
 
+  function handleCancel() {
+    setFullName(currentFullName);
+    setAvatar(null);
+  }
   return (
     <Form onSubmit={handleSubmit}>
       <FormRow label='Email address'>
@@ -52,7 +64,12 @@ function UpdateUserDataForm() {
         />
       </FormRow>
       <FormRow>
-        <Button type='reset' variation='secondary'>
+        <Button
+          type='reset'
+          variation='secondary'
+          onClick={handleCancel}
+          disabled={isUpdating}
+        >
           Cancel
         </Button>
         <Button disabled={isUpdating}>Update account</Button>

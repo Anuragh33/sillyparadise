@@ -3,7 +3,6 @@ import Button from '../../ui/Button';
 import Form from '../../ui/Form';
 import FormRow from '../../ui/FormRow';
 import Input from '../../ui/Input';
-import SpinnerMini from '../../ui/SpinnerMini';
 
 import { useSignUp } from './useSignUp';
 
@@ -47,7 +46,7 @@ function SignupForm() {
             required: 'This field is required',
             pattern: {
               value: /\S+@\S+\.\S+/,
-              message: 'Provide a valid emil address',
+              message: 'Provide a valid email address',
             },
           })}
         />
@@ -89,7 +88,7 @@ function SignupForm() {
         <Button variation='secondary' type='reset' disabled={isSigningUp}>
           Cancel
         </Button>
-        <Button>{isSigningUp ? <SpinnerMini /> : 'Create new user'}</Button>
+        <Button disabled={isSigningUp}>Create new user</Button>
       </FormRow>
     </Form>
   );
