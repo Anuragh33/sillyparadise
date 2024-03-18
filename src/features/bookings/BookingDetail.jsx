@@ -76,7 +76,9 @@ function BookingDetail() {
             disabled={isCheckingOut}
             icon={<HiArrowUpOnSquare />}
             onClick={() => {
-              checkout(bookingId);
+              checkout(bookingId, {
+                onSettled: () => navigate(-1),
+              });
             }}
           >
             Check Out
