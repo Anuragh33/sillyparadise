@@ -35,7 +35,7 @@ const FilterButton = styled.button`
   }
 `;
 
-function Filter({ filterField, options, param }) {
+function Filter({ filterField, options, param = { name: 'page', value: 1 } }) {
   const [searchParams, setSearchparams] = useSearchParams();
 
   searchParams.set(param.name, param.value);
