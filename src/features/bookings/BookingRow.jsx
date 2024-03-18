@@ -109,7 +109,7 @@ function BookingRow({
                 disabled={isCheckingOut}
                 icon={<HiArrowUpOnSquare />}
                 onClick={() => {
-                  checkout({ bookingId });
+                  checkout(bookingId);
                 }}
               >
                 CheckOut

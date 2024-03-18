@@ -73,7 +73,7 @@ function BookingDetail() {
             disabled={isCheckingOut}
             icon={<HiArrowUpOnSquare />}
             onClick={() => {
-              checkout({ bookingId });
+              checkout(bookingId);
             }}
           >
             Check Out
