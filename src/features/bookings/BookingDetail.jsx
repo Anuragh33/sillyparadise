@@ -8,6 +8,7 @@ import Row from '../../ui/Row';
 import Tag from '../../ui/Tag';
 import Modal from '../../ui/Modal';
 import ConfirmDelete from '../../ui/ConfirmDelete';
+import Empty from '../../ui/Empty';
 
 import BookingDataBox from './BookingDataBox';
 
@@ -37,6 +38,8 @@ function BookingDetail() {
   const { deletebooking, isDeleting } = useDeleteBookings();
 
   if (isLoading || isCheckingOut || isDeleting) return <Spinner />;
+
+  if (!booking) return <Empty resourceName='booking' />;
 
   const { status, id: bookingId, isPaid } = booking;
 
