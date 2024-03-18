@@ -43,10 +43,10 @@ function UpdateUserDataForm() {
   }
   return (
     <Form onSubmit={handleSubmit}>
-      <FormRow label='Email address'>
-        <Input value={email} disabled />
+      <FormRow label='Email Address'>
+        <Input value={email} disabled={isUpdating} />
       </FormRow>
-      <FormRow label='Full name'>
+      <FormRow label='Full Name'>
         <Input
           disabled={isUpdating}
           type='text'
@@ -55,7 +55,7 @@ function UpdateUserDataForm() {
           id='fullName'
         />
       </FormRow>
-      <FormRow label='Avatar image'>
+      <FormRow label='Avatar Image'>
         <FileInput
           disabled={isUpdating}
           id='avatar'
